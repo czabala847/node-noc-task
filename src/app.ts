@@ -1,3 +1,4 @@
+import { PrismaClient } from '@prisma/client'
 import { envs } from "./config/plugins/envs.plugin"
 import { MongoDatabase } from "./data/mongo"
 import { Server } from './presentation/server'
@@ -11,6 +12,9 @@ async function main() {
     dbName: envs.MONGO_DB_NAME,
     mongoUrl: envs.MONGO_URL,
   });
+
+  //prisma
+  const prisma = new PrismaClient()
 
   // const newLog = await LogModel.create({
   //   message: "Test message desde mongo",
